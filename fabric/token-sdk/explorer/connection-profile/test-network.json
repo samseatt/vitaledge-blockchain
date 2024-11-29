@@ -1,0 +1,48 @@
+{
+	"name": "test-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "Org1MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"mychannel": {
+			"peers": {
+				"peer0.clinicians.xmed.ai": {}
+			}
+		}
+	},
+	"organizations": {
+		"Org1MSP": {
+			"mspid": "Org1MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/clinicians.xmed.ai/users/User1@clinicians.xmed.ai/msp/keystore/priv_sk"
+			},
+			"peers": ["peer0.clinicians.xmed.ai"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/clinicians.xmed.ai/users/User1@clinicians.xmed.ai/msp/signcerts/User1@clinicians.xmed.ai-cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.clinicians.xmed.ai": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/clinicians.xmed.ai/peers/peer0.clinicians.xmed.ai/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.clinicians.xmed.ai:7051"
+		}
+	}
+}

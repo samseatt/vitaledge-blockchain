@@ -1,0 +1,67 @@
+# General
+.DS_Store
+.vscode/
+.idea/
+.project
+
+# Docker and Fabric Artifacts
+*.pem
+*.block
+*.tx
+*.tar.gz
+docker-compose*.log
+peerData/
+ordererData/
+
+# Go Build Artifacts
+bin/
+build/
+*.exe
+*.out
+**/vendor/
+
+# Dependency and Build Directories
+node_modules/
+package-lock.json
+.gradle
+build/
+target/
+
+# Language-specific Files
+fabric/**/*.java
+fabric/**/*.javascript
+fabric/**/*.ts
+fabric/**/*.java.sh
+fabric/**/*.javascript.sh
+fabric/**/*.typescript.sh
+
+# Currently Unused or Archived Projects
+fabric/asset-transfer-abac/
+fabric/asset-transfer-sbe/
+fabric/auction-dutch/
+fabric/auction-simple/
+fabric/high-throughput/
+fabric/test-network-k8s/
+fabric/full-stack-asset-transfer-guide/
+fabric/hardware-security-module/
+fabric/token-erc-1155/
+fabric/token-erc-20/
+fabric/token-erc-721/
+fabric/token-utxo/
+fabric/off_chain_data/application-java/
+fabric/off_chain_data/application-typescript/
+test-application/
+fabric/asset-transfer-ledger-queries/application-java/
+fabric/asset-transfer-ledger-queries/application-javascript/
+fabric/asset-transfer-ledger-queries/chaincode-javascript/
+fabric/asset-transfer-private-data/application-gateway-typescript/
+fabric/asset-transfer-private-data/chaincode-java/
+fabric/asset-transfer-private-data/chaincode-typescript/
+fabric/asset-transfer-secured-agreement/application-gateway-typescript/
+
+# Work in Progress
+docs-wip/
+
+# Override Ignore for Specific Config Files
+!fabric/full-stack-asset-transfer-guide/infrastructure/sample-network/config/
+

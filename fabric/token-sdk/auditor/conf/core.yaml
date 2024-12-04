@@ -32,19 +32,19 @@ fsc:
           id: issuer
           path: /var/fsc/keys/issuer/fsc/msp/signcerts/cert.pem
         addresses:
-          P2P: issuer.example.com:9101
+          P2P: issuer.drx.network:9101
       - name: owner1
         identity:
           id: owner1
           path: /var/fsc/keys/owner1/fsc/msp/signcerts/cert.pem
         addresses:
-          P2P: owner1.example.com:9201
+          P2P: owner1.drx.network:9201
       - name: owner2
         identity:
           id: owner2
           path: /var/fsc/keys/owner2/fsc/msp/signcerts/cert.pem
         addresses:
-          P2P: owner2.example.com:9301
+          P2P: owner2.drx.network:9301
 
 # ------------------- Fabric Configuration -------------------------
 fabric: 
@@ -66,11 +66,11 @@ fabric:
       timeout: 600s
     # List of orderer nodes this node can connect to. There must be at least one orderer node. Others are discovered.
     orderers:
-      - address: orderer.example.com:7050
+      - address: orderer.drx.network:7050
         connectionTimeout: 10s
         tlsEnabled: true
-        tlsRootCertFile: /var/fsc/keys/fabric/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt
-        serverNameOverride: orderer.example.com
+        tlsRootCertFile: /var/fsc/keys/fabric/organizations/ordererOrganizations/drx.network/orderers/orderer.drx.network/tls/ca.crt
+        serverNameOverride: orderer.drx.network
     # List of trusted peers this node can connect to. There must be at least one trusted peer. Others are discovered.
     peers:
       - address: peer0.clinicians.xmed.ai:7051

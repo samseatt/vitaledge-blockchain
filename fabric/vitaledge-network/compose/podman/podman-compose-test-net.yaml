@@ -10,7 +10,7 @@ services:
     volumes:
       - ./podman/peercfg:/etc/hyperledger/peercfg
 
-  peer0.org2.example.com:
+  peer0.scientists.xnome.net:
     volumes:
       - ./podman/peercfg:/etc/hyperledger/peercfg
 

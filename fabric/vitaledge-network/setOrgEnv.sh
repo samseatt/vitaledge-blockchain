@@ -15,9 +15,9 @@ set -o pipefail
 # Where am I?
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
-ORDERER_CA=${DIR}/vitaledge-network/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+ORDERER_CA=${DIR}/vitaledge-network/organizations/ordererOrganizations/drx.network/tlsca/tlsca.drx.network-cert.pem
 PEER0_ORG1_CA=${DIR}/vitaledge-network/organizations/peerOrganizations/clinicians.xmed.ai/tlsca/tlsca.clinicians.xmed.ai-cert.pem
-PEER0_ORG2_CA=${DIR}/vitaledge-network/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
+PEER0_ORG2_CA=${DIR}/vitaledge-network/organizations/peerOrganizations/scientists.xnome.net/tlsca/tlsca.scientists.xnome.net-cert.pem
 PEER0_ORG3_CA=${DIR}/vitaledge-network/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
 
 
@@ -31,9 +31,9 @@ if [[ ${ORG,,} == "org1" || ${ORG,,} == "digibank" ]]; then
 elif [[ ${ORG,,} == "org2" || ${ORG,,} == "magnetocorp" ]]; then
 
    CORE_PEER_LOCALMSPID=Org2MSP
-   CORE_PEER_MSPCONFIGPATH=${DIR}/vitaledge-network/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+   CORE_PEER_MSPCONFIGPATH=${DIR}/vitaledge-network/organizations/peerOrganizations/scientists.xnome.net/users/Admin@scientists.xnome.net/msp
    CORE_PEER_ADDRESS=localhost:9051
-   CORE_PEER_TLS_ROOTCERT_FILE=${DIR}/vitaledge-network/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
+   CORE_PEER_TLS_ROOTCERT_FILE=${DIR}/vitaledge-network/organizations/peerOrganizations/scientists.xnome.net/tlsca/tlsca.scientists.xnome.net-cert.pem
 
 else
    echo "Unknown \"$ORG\", please choose Org1/Digibank or Org2/Magnetocorp"

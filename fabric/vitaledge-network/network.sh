@@ -209,13 +209,13 @@ function createOrgs() {
 
     infoln "Creating Org2 Identities"
     #function_name cert-type   CN   org
-    peer_cert peer peer0.org2.example.com org2
-    peer_cert admin Admin@org2.example.com org2
+    peer_cert peer peer0.scientists.xnome.net org2
+    peer_cert admin Admin@scientists.xnome.net org2
 
     infoln "Creating Orderer Org Identities"
     #function_name cert-type   CN   
-    orderer_cert orderer orderer.example.com
-    orderer_cert admin Admin@example.com
+    orderer_cert orderer orderer.drx.network
+    orderer_cert admin Admin@drx.network
 
   fi 
 
@@ -443,7 +443,7 @@ function networkDown() {
   # Don't remove the generated artifacts -- note, the ledgers are always removed
   if [ "$MODE" != "restart" ]; then
     # Bring down the network, deleting the volumes
-    ${CONTAINER_CLI} volume rm docker_orderer.example.com docker_peer0.clinicians.xmed.ai docker_peer0.org2.example.com
+    ${CONTAINER_CLI} volume rm docker_orderer.drx.network docker_peer0.clinicians.xmed.ai docker_peer0.scientists.xnome.net
     #Cleanup the chaincode containers
     clearContainers
     #Cleanup images

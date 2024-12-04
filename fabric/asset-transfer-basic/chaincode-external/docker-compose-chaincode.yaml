@@ -18,10 +18,10 @@ services:
         expose:
             - 9999
 
-    asset-transfer-basic.org2.example.com:
+    asset-transfer-basic.scientists.xnome.net:
         build: .
-        container_name: asset-transfer-basic.org2.example.com
-        hostname: asset-transfer-basic.org2.example.com
+        container_name: asset-transfer-basic.scientists.xnome.net
+        hostname: asset-transfer-basic.scientists.xnome.net
         volumes:
             - ./crypto:/crypto
         env_file:

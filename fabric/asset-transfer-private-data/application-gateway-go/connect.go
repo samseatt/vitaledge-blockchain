@@ -24,12 +24,12 @@ const (
 	tlsCertPathOrg1       = cryptoPathOrg1 + "/peers/peer0.clinicians.xmed.ai/tls/ca.crt"
 	peerEndpointOrg1      = "dns:///localhost:7051"
 	peerNameOrg1          = "peer0.clinicians.xmed.ai"
-	cryptoPathOrg2        = "../../test-network/organizations/peerOrganizations/org2.example.com"
-	keyDirectoryPathOrg2  = cryptoPathOrg2 + "/users/User1@org2.example.com/msp/keystore"
-	certDirectoryPathOrg2 = cryptoPathOrg2 + "/users/User1@org2.example.com/msp/signcerts"
-	tlsCertPathOrg2       = cryptoPathOrg2 + "/peers/peer0.org2.example.com/tls/ca.crt"
+	cryptoPathOrg2        = "../../test-network/organizations/peerOrganizations/scientists.xnome.net"
+	keyDirectoryPathOrg2  = cryptoPathOrg2 + "/users/User1@scientists.xnome.net/msp/keystore"
+	certDirectoryPathOrg2 = cryptoPathOrg2 + "/users/User1@scientists.xnome.net/msp/signcerts"
+	tlsCertPathOrg2       = cryptoPathOrg2 + "/peers/peer0.scientists.xnome.net/tls/ca.crt"
 	peerEndpointOrg2      = "dns:///localhost:9051"
-	peerNameOrg2          = "peer0.org2.example.com"
+	peerNameOrg2          = "peer0.scientists.xnome.net"
 )
 
 // newGrpcConnection creates a gRPC connection to the Gateway server.

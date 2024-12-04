@@ -26,7 +26,7 @@ createAnchorPeerUpdate() {
     HOST="peer0.clinicians.xmed.ai"
     PORT=7051
   elif [ $ORG -eq 2 ]; then
-    HOST="peer0.org2.example.com"
+    HOST="peer0.scientists.xnome.net"
     PORT=9051
   elif [ $ORG -eq 3 ]; then
     HOST="peer0.org3.example.com"
@@ -50,7 +50,7 @@ createAnchorPeerUpdate() {
 }
 
 updateAnchorPeer() {
-  peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com -c $CHANNEL_NAME -f ${TEST_NETWORK_HOME}/channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls --cafile "$ORDERER_CA" >&log.txt
+  peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.drx.network -c $CHANNEL_NAME -f ${TEST_NETWORK_HOME}/channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls --cafile "$ORDERER_CA" >&log.txt
   res=$?
   cat log.txt
   verifyResult $res "Anchor peer update failed"

@@ -18,9 +18,9 @@ TEST_NETWORK_HOME=${TEST_NETWORK_HOME:-${PWD}}
 . ${TEST_NETWORK_HOME}/scripts/utils.sh
 
 export CORE_PEER_TLS_ENABLED=true
-export ORDERER_CA=${TEST_NETWORK_HOME}/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+export ORDERER_CA=${TEST_NETWORK_HOME}/organizations/ordererOrganizations/drx.network/tlsca/tlsca.drx.network-cert.pem
 export PEER0_ORG1_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/clinicians.xmed.ai/tlsca/tlsca.clinicians.xmed.ai-cert.pem
-export PEER0_ORG2_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
+export PEER0_ORG2_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/scientists.xnome.net/tlsca/tlsca.scientists.xnome.net-cert.pem
 export PEER0_ORG3_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
 
 # Set environment variables for the peer org
@@ -40,7 +40,7 @@ setGlobals() {
   elif [ $USING_ORG -eq 2 ]; then
     export CORE_PEER_LOCALMSPID=Org2MSP
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG2_CA
-    export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+    export CORE_PEER_MSPCONFIGPATH=${TEST_NETWORK_HOME}/organizations/peerOrganizations/scientists.xnome.net/users/Admin@scientists.xnome.net/msp
     export CORE_PEER_ADDRESS=localhost:9051
   elif [ $USING_ORG -eq 3 ]; then
     export CORE_PEER_LOCALMSPID=Org3MSP

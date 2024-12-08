@@ -57,3 +57,30 @@ export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/scientists
 export CORE_PEER_ADDRESS=localhost:9051
 
 peer chaincode query -C vitaledgechannel -n vitaledgechaincode -c '{"Args":["ReadAsset","asset6"]}'
+
+
+curl -X POST http://localhost:8082/api/log-event \
+     -H "Content-Type: application/json" \
+     -d '{"event_id": "E1", "event_type": "Info", "event_details": "Test event", "user": "Admin", "timestamp": "2024-11-23T10:00:00Z"}'
+
+
+# Get into running docker containers
+docker exec -it vitaledge-rest-api sh
+docker exec -it peer0.clinicians.xmed.ai sh
+
+# Use the openssl command to inspect the certificate
+openssl x509 -in /path/to/cert.pem -text -noout
+
+
+# Verify the Channel Configuration
+# Ensure the Org1MSP definition is correctly applied to the channel configuration.
+# If you suspect configuration drift, fetch the channel configuration and inspect it:
+peer channel fetch config config_block.pb -o localhost:7050 -c vitaledgechannel --tls --cafile /path/to/orderer/ca.pem
+configtxlator proto_decode --input config_block.pb --type common.Block --output config_block.json
+configtxlator proto_decode --input config.block --type common.Block --output config.json
+
+
+
+# ---- ONE TIME
+fabric-ca-client register --id.name appUser --id.secret appUserpw --id.type client --tls.certfiles /path/to/ca-cert.pem
+fabric-ca-client enroll -u https://appUser:appUserpw@localhost:7054 --caname ca-clinicians --csr.names "C=US,ST=North Carolina,O=Hyperledger,OU=client" --tls.certfiles /path/to/ca-cert.pem

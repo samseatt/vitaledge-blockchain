@@ -23,6 +23,22 @@ type Asset struct {
 	Size           int    `json:"Size"`
 }
 
+// Event represents a logged event
+type Event struct {
+	ID        string `json:"id"`
+	Type      string `json:"type"`
+	Details   string `json:"details"`
+	Actor     string `json:"actor"`
+	Timestamp string `json:"timestamp"`
+}
+
+// Token represents a user's token balance
+type Token struct {
+	UserID    string `json:"user_id"`
+	TokenType string `json:"token_type"`
+	Balance   int    `json:"balance"`
+}
+
 // InitLedger adds a base set of assets to the ledger
 func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	assets := []Asset{
@@ -191,4 +207,54 @@ func (s *SmartContract) GetAllAssets(ctx contractapi.TransactionContextInterface
 	}
 
 	return assets, nil
+}
+
+// LogEvent logs a new event on the blockchain
+func (s *SmartContract) LogEvent(ctx contractapi.TransactionContextInterface, id, eventType, details, actor, timestamp string) error {
+	event := Event{
+		ID:        id,
+		Type:      eventType,
+		Details:   details,
+		Actor:     actor,
+		Timestamp: timestamp,
+	}
+
+	eventJSON, err := json.Marshal(event)
+	if err != nil {
+		return fmt.Errorf("failed to serialize event: %v", err)
+	}
+
+	return ctx.GetStub().PutState(id, eventJSON)
+}
+
+// IncrementToken increments the token balance for a user
+func (s *SmartContract) IncrementToken(ctx contractapi.TransactionContextInterface, userID, tokenType string, amount int) error {
+	tokenKey, err := ctx.GetStub().CreateCompositeKey("Token", []string{userID, tokenType})
+	if err != nil {
+		return fmt.Errorf("failed to create token key: %v", err)
+	}
+
+	tokenJSON, err := ctx.GetStub().GetState(tokenKey)
+	var token Token
+	if err == nil && tokenJSON != nil {
+		err = json.Unmarshal(tokenJSON, &token)
+		if err != nil {
+			return fmt.Errorf("failed to parse token JSON: %v", err)
+		}
+	} else {
+		token = Token{
+			UserID:    userID,
+			TokenType: tokenType,
+			Balance:   0,
+		}
+	}
+
+	token.Balance += amount
+
+	tokenJSON, err = json.Marshal(token)
+	if err != nil {
+		return fmt.Errorf("failed to serialize token: %v", err)
+	}
+
+	return ctx.GetStub().PutState(tokenKey, tokenJSON)
 }

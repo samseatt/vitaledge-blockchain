@@ -1,4 +1,4 @@
-module github.com/hyperledger/fabric-samples/asset-transfer-basic/chaincode-go
+module github.com/samseatt/vitaledge-blockchain/fabric/chaincode/vitaledgechaincode
 
 go 1.22.0
 
@@ -6,6 +6,7 @@ require (
 	github.com/hyperledger/fabric-chaincode-go/v2 v2.0.0-20240618210511-f7903324a8af
 	github.com/hyperledger/fabric-contract-api-go/v2 v2.0.0
 	github.com/hyperledger/fabric-protos-go-apiv2 v0.3.3
+	github.com/hyperledger/fabric-samples/asset-transfer-basic/chaincode-go v0.0.0-20241128022037-1aa382278823
 	github.com/stretchr/testify v1.9.0
 	google.golang.org/protobuf v1.34.2
 )

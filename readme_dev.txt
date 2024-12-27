@@ -68,6 +68,10 @@ curl -X POST http://localhost:8082/api/log-event \
 docker exec -it vitaledge-rest-api sh
 docker exec -it peer0.clinicians.xmed.ai sh
 
+# Get logs of running docker conatainers
+docker logs vitaledge-rest-api sh
+docker logs peer0.clinicians.xmed.ai sh
+
 # Use the openssl command to inspect the certificate
 openssl x509 -in /path/to/cert.pem -text -noout
 
